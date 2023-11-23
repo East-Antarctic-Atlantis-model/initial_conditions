@@ -71,7 +71,7 @@ mean. Please note that for the current configuration of your model, you need to
 divide box 21 from the old model into boxes 21 and 22.
 
 -   I will keep the configuration for 28 polygons if you want to change that, you can either update the template yourself or use the modified template.
-
+```
     ## Load the original data from 'old_EAAM_Sums.csv' into 'orig' dataframe
     orig <- read.csv('template/old_EAAM28_Sums.csv', sep = ',')
     ## Load the template data from 'EAAM_horiz.csv' into 'template.h' dataframe
@@ -90,7 +90,7 @@ divide box 21 from the old model into boxes 21 and 22.
     }
 
     ## Load default values from 'old_EAAMFillValues.csv' into 'orig.default'
-    orig.default <- read.csv('template/old_EAAM28FillValues.csv', sep = ' ')
+    orig.default <- read.csv('template/old_EAAM28FillValues.csv', sep = ',')
 
     ## Load means data from 'old_EAAM_Means.csv' into 'orig.m' dataframe
     orig.m  <- read.csv('template/old_EAAM28_Means.csv', sep = ',')
@@ -139,8 +139,7 @@ divide box 21 from the old model into boxes 21 and 22.
     }
     ## Write the updated 'template.ini' to 'EAAM_init_filled.csv' file
     write.table(template.ini, 'template/EAAM_init_28_filled.csv', row.names = FALSE, sep = ',')
-
-
+```
 <a id="org9b68014"></a>
 
 # Creating the New initial condition files
@@ -150,7 +149,8 @@ divide box 21 from the old model into boxes 21 and 22.
     be able to generate the new initial conditions file. Ensure that the initial
     conditions match the previous ones.
 
-
+```
     init.file<- '/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_init_28_filled.csv'
     horiz.file<-'/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_horiz_28_filled.csv'
     make.init.nc(bgm.file_28, cum.depths, init.file, horiz.file, 'EAAM_28_init.nc', ice_model=TRUE)
+```
