@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{init.file}\PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}/home/por07g/Documents/Projects/Supervision/Ilaria/Initial\PYGZus{}conditions/template/EAAM\PYGZus{}init\PYGZus{}28\PYGZus{}filled.csv\PYGZsq{}}
+\PYG{n}{horiz.file}\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{l+s}{\PYGZsq{}/home/por07g/Documents/Projects/Supervision/Ilaria/Initial\PYGZus{}conditions/template/EAAM\PYGZus{}horiz\PYGZus{}28\PYGZus{}filled.csv\PYGZsq{}}
+\PYG{n+nf}{source}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/home/por07g/Documents/Code\PYGZus{}Tools/shiny\PYGZhy{}Shane/Fork\PYGZus{}git/shinyrAtlantis/R/initGen.R\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}debug(make.init.nc)}
+\PYG{n+nf}{make.init.nc}\PYG{p}{(}\PYG{n}{bgm.file\PYGZus{}28}\PYG{p}{,} \PYG{n}{cum.depths}\PYG{p}{,} \PYG{n}{init.file}\PYG{p}{,} \PYG{n}{horiz.file}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}EAAM\PYGZus{}28\PYGZus{}init.nc\PYGZsq{}}\PYG{p}{,} \PYG{n}{ice\PYGZus{}model}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\end{Verbatim}

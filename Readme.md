@@ -1,14 +1,14 @@
 
 # Table of Contents
 
-1.  [Getting the templates](#org2fb5414)
-2.  [Getting the previous initial condition](#orge08c33a)
-3.  [Populating the template](#orgea05d52)
-4.  [Creating the New initial condition files](#org9b68014)
+1.  [Getting the templates](#orgaaeca13)
+2.  [Getting the previous initial condition](#org77b9c7a)
+3.  [Populating the template](#org60993b1)
+4.  [Creating the New initial condition files](#orgad10a7c)
 
 
 
-<a id="org2fb5414"></a>
+<a id="orgaaeca13"></a>
 
 # Getting the templates
 
@@ -18,7 +18,7 @@ templates, you will require two essential components: the BGM file, which contai
 the polygon definitions, and the group definition files in CSV format (aka 'groups
 csv'). The code to create these templates is the ShinyRAtlantis. the following is the
 code and how to use it :
-
+```R
     ## creating the templates for the EAAM
     library(shinyrAtlantis)
     library(stringr)
@@ -26,11 +26,13 @@ code and how to use it :
     library(dplyr)
     library(ncdf4)
     grp.file = 'source_files/AntarcticGroups_v2.csv'
-    bgm.file_29 = 'source_files/EAAM_29_polygons_xy.bgm'
-    bgm.file_28 = 'source_files/EAAM_28_polygons_xy.bgm'
+    bgm.file_29 = 'EAAM_29_polygons_xy.bgm'
+    bgm.file_28 = 'EAAM_28_polygons_xy.bgm'
     cum.depths = c(0, 20, 50, 100, 200, 300, 400, 750, 1000, 2000, 5000)
     csv.name = 'template/EAAM_28'
     make.init.csv(grp.file, bgm.file_28, cum.depths, csv.name, ice_model=TRUE)
+```
+
 
 After creating the template there is few changes that need to be done to get the
 right template for the model :
@@ -40,7 +42,7 @@ right template for the model :
 3.  In your case, you will need to divide the box 21 in 2 boxes when using the 29 polygons version
 
 
-<a id="orge08c33a"></a>
+<a id="org77b9c7a"></a>
 
 # Getting the previous initial condition
 
@@ -51,6 +53,7 @@ distribution of these values to the Atlantis itself. While it is indeed possible
 manually force the vertical distribution, it would necessitate the creation of a new
 vertical distribution file (which is possible to do, but unnecessary).
 
+```R
     ## external set of tools that harvest the old.nc file
     source('tools.R')
     old_init_file='source_files/init_squid_230809.nc'
@@ -58,9 +61,9 @@ vertical distribution file (which is possible to do, but unnecessary).
     harvest_ini(old_init_file, fillVal=TRUE, output_file = 'template/old_EAAM28')
     ## Getting the mean for RN and SN
     harvest_ini(old_init_file, calculate_mean=TRUE, output_file = 'template/old_EAAM28')
+```
 
-
-<a id="orgea05d52"></a>
+<a id="org60993b1"></a>
 
 # Populating the template
 
@@ -71,7 +74,7 @@ mean. Please note that for the current configuration of your model, you need to
 divide box 21 from the old model into boxes 21 and 22.
 
 -   I will keep the configuration for 28 polygons if you want to change that, you can either update the template yourself or use the modified template.
-
+```R
     ## Load the original data from 'old_EAAM_Sums.csv' into 'orig' dataframe
     orig <- read.csv('template/old_EAAM28_Sums.csv', sep = ',')
     ## Load the template data from 'EAAM_horiz.csv' into 'template.h' dataframe
@@ -90,7 +93,7 @@ divide box 21 from the old model into boxes 21 and 22.
     }
 
     ## Load default values from 'old_EAAMFillValues.csv' into 'orig.default'
-    orig.default <- read.csv('template/old_EAAM28FillValues.csv', sep = ' ')
+    orig.default <- read.csv('template/old_EAAM28FillValues.csv', sep = ',')
 
     ## Load means data from 'old_EAAM_Means.csv' into 'orig.m' dataframe
     orig.m  <- read.csv('template/old_EAAM28_Means.csv', sep = ',')
@@ -111,10 +114,10 @@ divide box 21 from the old model into boxes 21 and 22.
     }
 
     ## Write the updated 'template.h' to 'EAAM_horiz_filled.csv' file
-    write.table(template.h, file = 'template/EAAM_horiz_28_filled.csv', sep = ',')
+    write.table(template.h, file = 'template/EAAM_horiz_28_filled.csv', sep = ',', row.names=FALSE)
     ## Define default and required values to fill
-    default.val <- c(grep('*_StructN', orig.default$Variables), grep('*_ResN', orig.default$Variables))
-    required_vals <- c(grep('*_StructN', colnames(orig.m)), grep('*_ResN', colnames(orig.m)))
+    default.val <- c(grep('*_StructN', orig.default$Variables), grep('*_ResN', orig.default$Variables), grep('*_F$', colnames(orig.m)))
+    required_vals <- c(grep('*_StructN', colnames(orig.m)), grep('*_ResN', colnames(orig.m)), grep('*_F$', colnames(orig.m)))
     ## Load the initial condition template data from 'EAAM_init.csv' into 'template.ini'
     template.ini <- read.csv('template/EAAM_28_init.csv')
     ## Get column names from 'orig.m' for required values
@@ -139,9 +142,9 @@ divide box 21 from the old model into boxes 21 and 22.
     }
     ## Write the updated 'template.ini' to 'EAAM_init_filled.csv' file
     write.table(template.ini, 'template/EAAM_init_28_filled.csv', row.names = FALSE, sep = ',')
+```
 
-
-<a id="org9b68014"></a>
+<a id="orgad10a7c"></a>
 
 # Creating the New initial condition files
 
@@ -150,7 +153,8 @@ divide box 21 from the old model into boxes 21 and 22.
     be able to generate the new initial conditions file. Ensure that the initial
     conditions match the previous ones.
 
-
+```R
     init.file<- '/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_init_28_filled.csv'
     horiz.file<-'/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_horiz_28_filled.csv'
     make.init.nc(bgm.file_28, cum.depths, init.file, horiz.file, 'EAAM_28_init.nc', ice_model=TRUE)
+```

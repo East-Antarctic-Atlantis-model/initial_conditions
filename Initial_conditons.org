@@ -115,10 +115,10 @@ divide box 21 from the old model into boxes 21 and 22.
   }
 
   ## Write the updated 'template.h' to 'EAAM_horiz_filled.csv' file
-  write.table(template.h, file = 'template/EAAM_horiz_28_filled.csv', sep = ',')
+  write.table(template.h, file = 'template/EAAM_horiz_28_filled.csv', sep = ',', row.names=FALSE)
   ## Define default and required values to fill
-  default.val <- c(grep('*_StructN', orig.default$Variables), grep('*_ResN', orig.default$Variables), grep('*_F', colnames(orig.m)))
-  required_vals <- c(grep('*_StructN', colnames(orig.m)), grep('*_ResN', colnames(orig.m)), grep('*_F', colnames(orig.m)))
+  default.val <- c(grep('*_StructN', orig.default$Variables), grep('*_ResN', orig.default$Variables), grep('*_F$', colnames(orig.m)))
+  required_vals <- c(grep('*_StructN', colnames(orig.m)), grep('*_ResN', colnames(orig.m)), grep('*_F$', colnames(orig.m)))
   ## Load the initial condition template data from 'EAAM_init.csv' into 'template.ini'
   template.ini <- read.csv('template/EAAM_28_init.csv')
   ## Get column names from 'orig.m' for required values
@@ -138,7 +138,6 @@ divide box 21 from the old model into boxes 21 and 22.
       replace <- fillvals$fillvalues[which(fillvals$Variables %in% template.ini[i, 1])]
       values[is.na(values)] <- replace
     }
-
     ## Update 'template.ini' with the calculated values
     template.ini[i, c("sediment", "wc.hor.scalar")] <- values
   }

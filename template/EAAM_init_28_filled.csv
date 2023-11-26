@@ -4,7 +4,7 @@
 "dz",TRUE,2,"[ z b ]","phys","m","Thickness",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"calculated","calculated",1,1
 "numlayers",TRUE,1,"[ b ]","phys","1","Number of layers",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"calculated","none",0,1
 "ice_dz",TRUE,2,"[ icenz ]","phys","1","Thickness",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"custom","calculated",0,0
-"SED",TRUE,2,"[ z b ]","tracer","mg N m-3","Pasive tracer",0,1,1,1,0,0,1,0,1,0,0,1e-06,1000000000,200000000,200000000,NA,"custom","calculated",0,0
+"SED",TRUE,2,"[ z b ]","phys","mg N m-3","Pasive tracer",0,1,1,1,NA,NA,1,0,NA,NA,NA,1e-06,1000000000,200000000,200000000,NA,"custom","calculated",0,0
 "hdsource",TRUE,2,"[ z b ]","phys","1","Hydrodynamic sources",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
 "hdsink",TRUE,2,"[ z b ]","phys","1","Hydrodynamic sinks",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
 "eflux",TRUE,2,"[ z b ]","phys","1","Hydrodynamic net exchanges",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
@@ -259,16 +259,16 @@
 "Penguin_Krill14_ResN",FALSE,2,"[ z b ]","tracer","mg N","Individual reserve N for Penguin_Krill cohort 14",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"constant","uniform",43943.763518385,43943.763518385
 "Penguin_Krill15_ResN",FALSE,2,"[ z b ]","tracer","mg N","Individual reserve N for Penguin_Krill cohort 15",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"constant","uniform",43943.763518385,43943.763518385
 "Penguin_Fish_N",FALSE,2,"[ z b ]","tracer","mg N m-3","Penguin_Fish total N",0,1,0,0,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
-"Penguin_Fish1_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 1",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,149.12560344068
-"Penguin_Fish2_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 2",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,54.8602436581113
-"Penguin_Fish3_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 3",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,20.1819557794751
-"Penguin_Fish4_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 4",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,7.42452661390007
-"Penguin_Fish5_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 5",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,2.73133070168406
-"Penguin_Fish6_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 6",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,1.00480041218994
-"Penguin_Fish7_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 7",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0.369645414125269
-"Penguin_Fish8_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 8",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0.13598494837999
-"Penguin_Fish9_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 9",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0.0500260668177581
-"Penguin_Fish10_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 10",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0.0184035615049221
+"Penguin_Fish1_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 1",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish2_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 2",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish3_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 3",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish4_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 4",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish5_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 5",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish6_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 6",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish7_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 7",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish8_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 8",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish9_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 9",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
+"Penguin_Fish10_Nums",FALSE,2,"[ z b ]","tracer","1","Numbers of Penguin_Fish cohort 10",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"custom","surface",0,0
 "Penguin_Fish1_StructN",FALSE,2,"[ z b ]","tracer","mg N","Individual structural N for Penguin_Fish cohort 1",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"constant","uniform",96130.7378034126,96130.7378034126
 "Penguin_Fish2_StructN",FALSE,2,"[ z b ]","tracer","mg N","Individual structural N for Penguin_Fish cohort 2",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"constant","uniform",96130.7378034126,96130.7378034126
 "Penguin_Fish3_StructN",FALSE,2,"[ z b ]","tracer","mg N","Individual structural N for Penguin_Fish cohort 3",0,0,0,0,0,0,1,0,0,0,0,10,1000000000,200000000,200000000,NA,"constant","uniform",96130.7378034126,96130.7378034126

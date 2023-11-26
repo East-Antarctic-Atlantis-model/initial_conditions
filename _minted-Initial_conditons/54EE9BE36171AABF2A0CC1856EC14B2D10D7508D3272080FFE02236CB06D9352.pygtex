@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} external set of tools that harvest the old.nc file}
+\PYG{n+nf}{source}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}tools.R\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{old\PYGZus{}init\PYGZus{}file}\PYG{o}{=}\PYG{l+s}{\PYGZsq{}source\PYGZus{}files/init\PYGZus{}squid\PYGZus{}230809.nc\PYGZsq{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Getting the total values, total sum and abundance as well as defaul values}
+\PYG{n+nf}{harvest\PYGZus{}ini}\PYG{p}{(}\PYG{n}{old\PYGZus{}init\PYGZus{}file}\PYG{p}{,} \PYG{n}{fillVal}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,} \PYG{n}{output\PYGZus{}file} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}template/old\PYGZus{}EAAM28\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Getting the mean for RN and SN}
+\PYG{n+nf}{harvest\PYGZus{}ini}\PYG{p}{(}\PYG{n}{old\PYGZus{}init\PYGZus{}file}\PYG{p}{,} \PYG{n}{calculate\PYGZus{}mean}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,} \PYG{n}{output\PYGZus{}file} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}template/old\PYGZus{}EAAM28\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

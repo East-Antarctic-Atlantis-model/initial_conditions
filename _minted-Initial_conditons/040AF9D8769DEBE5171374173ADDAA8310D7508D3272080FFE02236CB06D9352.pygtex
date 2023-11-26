@@ -1,0 +1,69 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load the original data from \PYGZsq{}old\PYGZus{}EAAM\PYGZus{}Sums.csv\PYGZsq{} into \PYGZsq{}orig\PYGZsq{} dataframe}
+\PYG{n}{orig} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}template/old\PYGZus{}EAAM28\PYGZus{}Sums.csv\PYGZsq{}}\PYG{p}{,} \PYG{n}{sep} \PYG{o}{=} \PYG{l+s}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load the template data from \PYGZsq{}EAAM\PYGZus{}horiz.csv\PYGZsq{} into \PYGZsq{}template.h\PYGZsq{} dataframe}
+\PYG{n}{template.h} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}template/EAAM\PYGZus{}28\PYGZus{}horiz.csv\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get column names of the \PYGZsq{}orig\PYGZsq{} dataframe}
+\PYG{n}{col} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Iterate through each row of \PYGZsq{}template.h\PYGZsq{} to match and update values}
+\PYG{n+nf}{for }\PYG{p}{(}\PYG{n}{i} \PYG{n}{in} \PYG{l+m}{1} \PYG{o}{:} \PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{template.h}\PYG{p}{))\PYGZob{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Find the positions of matching column names in \PYGZsq{}orig\PYGZsq{}}
+  \PYG{n}{pos} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{col} \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{n}{template.h}\PYG{o}{\PYGZdl{}}\PYG{n}{Variable}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Skip to the next row if no matching column found}
+  \PYG{n+nf}{if }\PYG{p}{(}\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)} \PYG{o}{==} \PYG{l+m}{0} \PYG{o}{|} \PYG{n+nf}{is.null}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{))} \PYG{n+nf}{next}\PYG{p}{()}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Update the values in \PYGZsq{}template.h\PYGZsq{} with corresponding values from \PYGZsq{}orig\PYGZsq{}}
+  \PYG{n}{template.h}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{l+m}{2} \PYG{o}{:} \PYG{n+nf}{ncol}\PYG{p}{(}\PYG{n}{template.h}\PYG{p}{)]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{orig}\PYG{p}{[,} \PYG{n}{pos}\PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load default values from \PYGZsq{}old\PYGZus{}EAAMFillValues.csv\PYGZsq{} into \PYGZsq{}orig.default\PYGZsq{}}
+\PYG{n}{orig.default} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}template/old\PYGZus{}EAAM28FillValues.csv\PYGZsq{}}\PYG{p}{,} \PYG{n}{sep} \PYG{o}{=} \PYG{l+s}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load means data from \PYGZsq{}old\PYGZus{}EAAM\PYGZus{}Means.csv\PYGZsq{} into \PYGZsq{}orig.m\PYGZsq{} dataframe}
+\PYG{n}{orig.m}  \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}template/old\PYGZus{}EAAM28\PYGZus{}Means.csv\PYGZsq{}}\PYG{p}{,} \PYG{n}{sep} \PYG{o}{=} \PYG{l+s}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{col.nam} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Define a subset of columns to update in \PYGZsq{}template.h\PYGZsq{}}
+\PYG{n}{col} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}NH3\PYGZsq{}}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}NO3\PYGZsq{}}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}DON\PYGZsq{}}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}Si\PYGZsq{}}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}Chl\PYGZus{}a\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Iterate through each row of \PYGZsq{}template.h\PYGZsq{} to match and update values}
+\PYG{n+nf}{for }\PYG{p}{(}\PYG{n}{i} \PYG{n}{in} \PYG{l+m}{1} \PYG{o}{:} \PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{template.h}\PYG{p}{))\PYGZob{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Find the positions of matching column names in \PYGZsq{}orig.m\PYGZsq{}}
+  \PYG{n}{pos} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{col} \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{n}{template.h}\PYG{o}{\PYGZdl{}}\PYG{n}{Variable}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Skip to the next row if no matching column found}
+  \PYG{n+nf}{if }\PYG{p}{(}\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)} \PYG{o}{==} \PYG{l+m}{0} \PYG{o}{|} \PYG{n+nf}{is.null}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{))} \PYG{n+nf}{next}\PYG{p}{()}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Find the corresponding positions in \PYGZsq{}col.nam\PYGZsq{} for the matched columns}
+  \PYG{n}{t.pos} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{col.nam} \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{n}{col}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{])}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Update the values in \PYGZsq{}template.h\PYGZsq{} with corresponding values from \PYGZsq{}orig.m\PYGZsq{}}
+  \PYG{n}{template.h}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{l+m}{2} \PYG{o}{:} \PYG{n+nf}{ncol}\PYG{p}{(}\PYG{n}{template.h}\PYG{p}{)]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{orig.m}\PYG{p}{[,} \PYG{n}{t.pos}\PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Write the updated \PYGZsq{}template.h\PYGZsq{} to \PYGZsq{}EAAM\PYGZus{}horiz\PYGZus{}filled.csv\PYGZsq{} file}
+\PYG{n+nf}{write.table}\PYG{p}{(}\PYG{n}{template.h}\PYG{p}{,} \PYG{n}{file} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}template/EAAM\PYGZus{}horiz\PYGZus{}28\PYGZus{}filled.csv\PYGZsq{}}\PYG{p}{,} \PYG{n}{sep} \PYG{o}{=} \PYG{l+s}{\PYGZsq{},\PYGZsq{}}\PYG{p}{,} \PYG{n}{row.names}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Define default and required values to fill}
+\PYG{n}{default.val} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}StructN\PYGZsq{}}\PYG{p}{,} \PYG{n}{orig.default}\PYG{o}{\PYGZdl{}}\PYG{n}{Variables}\PYG{p}{),} \PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}ResN\PYGZsq{}}\PYG{p}{,} \PYG{n}{orig.default}\PYG{o}{\PYGZdl{}}\PYG{n}{Variables}\PYG{p}{),} \PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}F\PYGZdl{}\PYGZsq{}}\PYG{p}{,} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)))}
+\PYG{n}{required\PYGZus{}vals} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}StructN\PYGZsq{}}\PYG{p}{,} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)),} \PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}ResN\PYGZsq{}}\PYG{p}{,} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)),} \PYG{n+nf}{grep}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}*\PYGZus{}F\PYGZdl{}\PYGZsq{}}\PYG{p}{,} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)))}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load the initial condition template data from \PYGZsq{}EAAM\PYGZus{}init.csv\PYGZsq{} into \PYGZsq{}template.ini\PYGZsq{}}
+\PYG{n}{template.ini} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}template/EAAM\PYGZus{}28\PYGZus{}init.csv\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get column names from \PYGZsq{}orig.m\PYGZsq{} for required values}
+\PYG{n}{col.names} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{colnames}\PYG{p}{(}\PYG{n}{orig.m}\PYG{p}{)[}\PYG{n}{required\PYGZus{}vals}\PYG{p}{]}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Extract fill values from \PYGZsq{}orig.default\PYGZsq{} based on default values}
+\PYG{n}{fillvals} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{orig.default}\PYG{p}{[}\PYG{n}{default.val}\PYG{p}{,} \PYG{p}{]}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Iterate through each row of \PYGZsq{}template.ini\PYGZsq{} to update sediment and wc.hor.scalar values}
+\PYG{n+nf}{for }\PYG{p}{(}\PYG{n}{i} \PYG{n}{in} \PYG{l+m}{1} \PYG{o}{:} \PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{template.ini}\PYG{p}{))\PYGZob{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Find the positions of matching column names in \PYGZsq{}col.names\PYGZsq{}}
+  \PYG{n}{pos} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{col.names} \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{n}{template.ini}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{l+m}{1}\PYG{p}{])}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Skip to the next row if no matching column found}
+  \PYG{n+nf}{if }\PYG{p}{(}\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)} \PYG{o}{==} \PYG{l+m}{0}\PYG{p}{)} \PYG{n+nf}{next}\PYG{p}{()}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Extract the values from \PYGZsq{}orig.m\PYGZsq{} for the matching columns}
+  \PYG{n}{values} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{orig.m}\PYG{p}{[}\PYG{l+m}{1} \PYG{o}{:} \PYG{l+m}{2}\PYG{p}{,} \PYG{n}{required\PYGZus{}vals}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]]}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Replace missing values with corresponding fill values}
+  \PYG{n+nf}{if }\PYG{p}{(}\PYG{n+nf}{any}\PYG{p}{(}\PYG{n+nf}{is.na}\PYG{p}{(}\PYG{n}{values}\PYG{p}{)))\PYGZob{}}
+    \PYG{n}{replace} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{fillvals}\PYG{o}{\PYGZdl{}}\PYG{n}{fillvalues}\PYG{p}{[}\PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{fillvals}\PYG{o}{\PYGZdl{}}\PYG{n}{Variables} \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{n}{template.ini}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{l+m}{1}\PYG{p}{])]}
+    \PYG{n}{values}\PYG{p}{[}\PYG{n+nf}{is.na}\PYG{p}{(}\PYG{n}{values}\PYG{p}{)]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{replace}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Update \PYGZsq{}template.ini\PYGZsq{} with the calculated values}
+  \PYG{n}{template.ini}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}sediment\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}wc.hor.scalar\PYGZdq{}}\PYG{p}{)]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{values}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Write the updated \PYGZsq{}template.ini\PYGZsq{} to \PYGZsq{}EAAM\PYGZus{}init\PYGZus{}filled.csv\PYGZsq{} file}
+\PYG{n+nf}{write.table}\PYG{p}{(}\PYG{n}{template.ini}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}template/EAAM\PYGZus{}init\PYGZus{}28\PYGZus{}filled.csv\PYGZsq{}}\PYG{p}{,} \PYG{n}{row.names} \PYG{o}{=} \PYG{k+kc}{FALSE}\PYG{p}{,} \PYG{n}{sep} \PYG{o}{=} \PYG{l+s}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

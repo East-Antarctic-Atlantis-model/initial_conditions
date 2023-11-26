@@ -4,7 +4,7 @@
 "dz",TRUE,2,"[ z b ]","phys","m","Thickness",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"calculated","calculated",1,1
 "numlayers",TRUE,1,"[ b ]","phys","1","Number of layers",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"calculated","none",0,1
 "ice_dz",TRUE,2,"[ icenz ]","phys","1","Thickness",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"custom","calculated",0,0
-"SED",TRUE,2,"[ z b ]","tracer","mg N m-3","Pasive tracer",0,1,1,1,0,0,1,0,1,0,0,1e-06,1000000000,200000000,200000000,NA,"custom","calculated",0,0
+"SED",TRUE,2,"[ z b ]","phys","mg N m-3","Pasive tracer",0,1,1,1,NA,NA,1,0,NA,NA,NA,1e-06,1000000000,200000000,200000000,NA,"custom","calculated",0,0
 "hdsource",TRUE,2,"[ z b ]","phys","1","Hydrodynamic sources",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
 "hdsink",TRUE,2,"[ z b ]","phys","1","Hydrodynamic sinks",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0
 "eflux",TRUE,2,"[ z b ]","phys","1","Hydrodynamic net exchanges",0,0,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,"constant","uniform",0,0

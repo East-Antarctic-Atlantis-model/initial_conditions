@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} creating the templates for the EAAM}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{shinyrAtlantis}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{stringr}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{tidyverse}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{dplyr}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{ncdf4}\PYG{p}{)}
+\PYG{n}{grp.file} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}source\PYGZus{}files/AntarcticGroups\PYGZus{}v2.csv\PYGZsq{}}
+\PYG{n}{bgm.file\PYGZus{}29} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}EAAM\PYGZus{}29\PYGZus{}polygons\PYGZus{}xy.bgm\PYGZsq{}}
+\PYG{n}{bgm.file\PYGZus{}28} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}EAAM\PYGZus{}28\PYGZus{}polygons\PYGZus{}xy.bgm\PYGZsq{}}
+\PYG{n}{cum.depths} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{l+m}{20}\PYG{p}{,} \PYG{l+m}{50}\PYG{p}{,} \PYG{l+m}{100}\PYG{p}{,} \PYG{l+m}{200}\PYG{p}{,} \PYG{l+m}{300}\PYG{p}{,} \PYG{l+m}{400}\PYG{p}{,} \PYG{l+m}{750}\PYG{p}{,} \PYG{l+m}{1000}\PYG{p}{,} \PYG{l+m}{2000}\PYG{p}{,} \PYG{l+m}{5000}\PYG{p}{)}
+\PYG{n}{csv.name} \PYG{o}{=} \PYG{l+s}{\PYGZsq{}template/EAAM\PYGZus{}28\PYGZsq{}}
+\PYG{n+nf}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}/home/por07g/Documents/Code\PYGZus{}Tools/shiny\PYGZhy{}Shane/Fork\PYGZus{}git/shinyrAtlantis/R/initGen.R\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{make.init.csv}\PYG{p}{(}\PYG{n}{grp.file}\PYG{p}{,} \PYG{n}{bgm.file\PYGZus{}28}\PYG{p}{,} \PYG{n}{cum.depths}\PYG{p}{,} \PYG{n}{csv.name}\PYG{p}{,} \PYG{n}{ice\PYGZus{}model}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\end{Verbatim}
