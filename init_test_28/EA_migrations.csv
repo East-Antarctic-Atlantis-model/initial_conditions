@@ -1,0 +1,5 @@
+GroupCode,StartStage,MigID,StartTofY,EndTofY,Leave_Period,Return_Period,IsAnnualMigration,MinTimeAway,MaxTimeAway,MigrateStockReturn,MigPropSizeInc,MigPropSurvive,PartialExit,MinAgeLeave,MaxAgeLeave,ReprodAllowed
+WHO,0,0,227,140,45,1,1,0,0,0,5.08,1,0,0,0,0
+WHO,0,0,227,140,45,1,1,0,0,0,5.08,1,0,0,0,0
+WHM,1,0,165,188,1,1,1,0,0,0,0.2,1,0,0,0,0
+WHM,1,0,165,188,1,1,1,0,0,0,0.2,1,0,0,0,0
