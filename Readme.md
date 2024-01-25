@@ -158,3 +158,11 @@ divide box 21 from the old model into boxes 21 and 22.
     horiz.file<-'/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_horiz_28_filled.csv'
     make.init.nc(bgm.file_28, cum.depths, init.file, horiz.file, 'EAAM_28_init.nc', ice_model=TRUE)
 ```
+
+# EAAM-specific parametrisation
+
+- Whilst the previous steps generate an .nc file that is theoretically ready to run, many parameters need to be changed to reflect EAAM-specific conditions. Additionally, the polygon map of EAAM has been updated to contain an extra box (n = 29, was 28) in the southern Kerguelen Plateau. The new code additions will automatically modify certain parameters for the initial conditions file and split box 21 into 21 and 22, each bearing half of the _Nums of the original box. The full code is available in an R script in the repository.
+- Note that the original tools.R code was not suitable as it was including the sediment value to calculate the Mean and Sum of the variables (these are needed to populate the new initial condition file). The new function is written so that the user can choose to exclude a layer. The user needs to know the layer number corresponding to the sediment (in EAAM case, sed layer is no. 11). Eg.:
+```R
+harvest_ini(old_init_file, fillVal = TRUE, output_file = 'template/old_EAAM29', exclude_row = 11)
+```
