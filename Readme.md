@@ -5,6 +5,7 @@
 2.  [Getting the previous initial condition](#org77b9c7a)
 3.  [Populating the template](#org60993b1)
 4.  [Creating the New initial condition files](#orgad10a7c)
+5.  [EAAM-specific parametrisation](#eaamspec)
 
 
 
@@ -158,6 +159,8 @@ divide box 21 from the old model into boxes 21 and 22.
     horiz.file<-'/home/por07g/Documents/Projects/Supervision/Ilaria/Initial_conditions/template/EAAM_horiz_28_filled.csv'
     make.init.nc(bgm.file_28, cum.depths, init.file, horiz.file, 'EAAM_28_init.nc', ice_model=TRUE)
 ```
+
+<a id="eaamspec"></a>
 
 # EAAM-specific parametrisation
 
